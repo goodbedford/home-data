@@ -8,6 +8,11 @@ let dotenv = require('dotenv');
 let db = require('./app/models/index');
 dotenv.config();
 mongoose.connect(process.env.DB_THERMOSTAT);
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
