@@ -41,9 +41,9 @@ router.route('/homes')
 
     home.save(function(err, home) {
       if(err) {
-        response.send(err);
+        response.status(404).send(err);
       }
-      response.json(home);
+      response.status(201).json(home);
     });
   });
 router.route('/homes/:id')
@@ -117,7 +117,7 @@ router.route('/homes/:home_id/rooms')
             if(err) {
               response.send(err);
             }
-            response.json(room);
+            response.status(201).json(room);
           });
         });
       });
