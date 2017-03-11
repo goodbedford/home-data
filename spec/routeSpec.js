@@ -93,8 +93,8 @@ describe('Routes', function() {
         var updatedRoom = {
           name: "updated room",
           thermostat: 60,
-          curtains: false,
-          lights: false
+          curtains: true,
+          lights: true
         }
         request.put({url:`${baseUrl}/${newHome._id}/rooms/${newRoom._id}`, form: updatedRoom},function(err, response, room) {
           // console.log("update room", room);
@@ -116,7 +116,15 @@ describe('Routes', function() {
         newRoom.thermostat -= 1;
         expect(newRoom.thermostat).toBe(60);
         done();
-      })
+      });
+      it("curtains should be true", function(done) {
+        expect(newRoom.curtains).toBe(true);
+        done();
+      });
+      it("lights should be true", function(done) {
+        expect(newRoom.lights).toBe(true);
+        done();
+      });
     });
     describe("DELETE", function() {
       it("returns status code 200", function(done) {
