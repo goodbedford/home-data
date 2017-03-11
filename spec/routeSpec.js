@@ -90,7 +90,13 @@ describe('Routes', function() {
     });
     describe("PUT", function() {
       it("returns status code 200", function(done) {
-        request.put({url:`${baseUrl}/${newHome._id}/rooms/${newRoom._id}`, form: {name: "updated room"}},function(err, response, room) {
+        var updatedRoom = {
+          name: "updated room",
+          thermostat: 60,
+          curtains: false,
+          lights: false
+        }
+        request.put({url:`${baseUrl}/${newHome._id}/rooms/${newRoom._id}`, form: updatedRoom},function(err, response, room) {
           // console.log("update room", room);
           newRoom = JSON.parse(room);
           expect(response.statusCode).toEqual(200);
@@ -101,6 +107,16 @@ describe('Routes', function() {
         expect(newRoom.name).toBe("updated room");
         done();
       });
+      it("thermstat should increase", function(done) {
+        newRoom.thermostat += 1;
+        expect(newRoom.thermostat).toBe(61);
+        done();
+      });
+      it("thermstat should decrease", function(done) {
+        newRoom.thermostat -= 1;
+        expect(newRoom.thermostat).toBe(60);
+        done();
+      })
     });
     describe("DELETE", function() {
       it("returns status code 200", function(done) {

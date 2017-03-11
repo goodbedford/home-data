@@ -73,16 +73,16 @@ router.route('/homes/:id')
               console.log('Deleted room ' + roomId);
             });
         });
-          db.Home
-          .findByIdAndRemove(home._id)
-          .exec(function(err, deleted) {
-            console.log("deleted", deleted);
-            if(err) {
-              response.send(err);
-            }
-            response.json({message: 'Deleted home ' + deleted._id});
+        db.Home
+        .findByIdAndRemove(home._id)
+        .exec(function(err, deleted) {
+          console.log("deleted", deleted);
+          if(err) {
+            response.send(err);
+          }
+          response.json({message: 'Deleted home ' + deleted._id});
 
-          })
+        })
         // response.json({messag: 'Deleted' + id});
       });
   })
@@ -138,6 +138,9 @@ router.route('/homes/:home_id/rooms/:id')
       .findById(request.params.id)
       .exec(function(err, room) {
         room.name = request.body.name || room.name;
+        room.thermostat = JSON.parse(request.body.thermostat) || room.thermostat;
+        room.curtains = request.body.curtains || room.curtains;
+        room.lights = request.body.lights || room.lights;
         room.save(function(err, room) {
           if(err) {
             response.send(err);
