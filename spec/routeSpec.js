@@ -90,7 +90,7 @@ describe('Routes', function() {
     });
     describe("PUT", function() {
       it("returns status code 200", function(done) {
-        var updatedRoom = {
+        let updatedRoom = {
           name: "updated room",
           thermostat: 60,
           curtains: true,

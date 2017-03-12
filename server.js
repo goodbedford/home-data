@@ -6,11 +6,20 @@ let port = process.env.PORT || 3000;
 let mongoose = require('mongoose');
 let dotenv = require('dotenv');
 let db = require('./app/models/index');
+
 dotenv.config();
 mongoose.connect(process.env.DB_THERMOSTAT);
+
+// middleware
+
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH,OPTIONS");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+  if (req.method === "OPTIONS") {
+    res.send(200);
+  }
   next();
 });
 
@@ -20,10 +29,9 @@ app.use(bodyParser.json());
 router.use(function(request, response, next) {
   //log router
   console.log("router is working");
-
   next();
 });
-
+// router
 router.route('/homes')
   .get(function(request, response) {
     db.Home
@@ -177,7 +185,7 @@ router.route('/homes/:home_id/rooms/:id')
             });
           });
       });
-  })
+  });
 
 app.use("/api", router);
 app.listen(port, function() {
