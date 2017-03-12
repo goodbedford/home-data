@@ -127,6 +127,12 @@ describe('Routes', function() {
       });
     });
     describe("DELETE", function() {
+      afterEach(function(done) {
+        request.delete(`${baseUrl}/${newHome._id}`, function(err, response, home) {
+          console.log("deleted", home);
+          done();
+        });
+      });
       it("returns status code 200", function(done) {
         request.delete(`${baseUrl}/${newHome._id}/rooms/${newRoom._id}`,function(err, response, home) {
           // console.log("home after deleted room", home);
