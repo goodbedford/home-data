@@ -93,8 +93,8 @@ describe('Routes', function() {
         let updatedRoom = {
           name: "updated room",
           thermostat: 60,
-          curtains: true,
-          lights: true
+          curtains: false,
+          lights: false
         }
         request.put({url:`${baseUrl}/${newHome._id}/rooms/${newRoom._id}`, form: updatedRoom},function(err, response, room) {
           // console.log("update room", room);

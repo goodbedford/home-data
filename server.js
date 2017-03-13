@@ -145,14 +145,15 @@ router.route('/homes/:home_id/rooms/:id')
     db.Room
       .findById(request.params.id)
       .exec(function(err, room) {
-        room.name = request.body.name || room.name;
-        room.thermostat = JSON.parse(request.body.thermostat) || room.thermostat;
-        room.curtains = JSON.parse(request.body.curtains) || room.curtains;
-        room.lights = JSON.parse( request.body.lights) || room.lights;
+        room.name = request.body.name;
+        room.thermostat = JSON.parse(request.body.thermostat);
+        room.curtains = JSON.parse(request.body.curtains);
+        room.lights = JSON.parse( request.body.lights);
         room.save(function(err, updatedRoom) {
           if(err) {
             response.send(err);
           }
+          console.log("updated", updatedRoom)
           response.json(updatedRoom);
         });
       });
