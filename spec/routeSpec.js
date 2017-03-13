@@ -103,6 +103,12 @@ describe('Routes', function() {
           done();
         });
       });
+      it("should update home with new id", function(done) {
+        request.get(`${baseUrl}/${newHome._id}`, function(err, response, home) {
+          console.log("new room", newRoom._id);
+          done();
+        });
+      });
       it("room name should be updated", function(done) {
         expect(newRoom.name).toBe("updated room");
         done();

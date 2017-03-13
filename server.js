@@ -147,13 +147,13 @@ router.route('/homes/:home_id/rooms/:id')
       .exec(function(err, room) {
         room.name = request.body.name || room.name;
         room.thermostat = JSON.parse(request.body.thermostat) || room.thermostat;
-        room.curtains = request.body.curtains || room.curtains;
-        room.lights = request.body.lights || room.lights;
-        room.save(function(err, room) {
+        room.curtains = JSON.parse(request.body.curtains) || room.curtains;
+        room.lights = JSON.parse( request.body.lights) || room.lights;
+        room.save(function(err, updatedRoom) {
           if(err) {
             response.send(err);
           }
-          response.json(room);
+          response.json(updatedRoom);
         });
       });
   })
