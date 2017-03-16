@@ -124,11 +124,11 @@ describe('Routes', function() {
         done();
       });
       it("curtains should be true", function(done) {
-        expect(newRoom.curtains).toBe(true);
+        expect(newRoom.curtains).toBe(false);
         done();
       });
       it("lights should be true", function(done) {
-        expect(newRoom.lights).toBe(true);
+        expect(newRoom.lights).toBe(false);
         done();
       });
     });
