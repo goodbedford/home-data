@@ -188,9 +188,10 @@ router.route('/homes/:home_id/rooms/:id')
           });
       });
   });
-app.get("*", function(err, response) {
-  response.redirect("/homes");
-});
+app.route("*")
+  .get(function(err, response) {
+    response.redirect("/");
+  });
 
 
 app.listen(port, function() {
