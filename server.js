@@ -189,7 +189,7 @@ router.route('/homes/:home_id/rooms/:id')
       });
   });
 app.get("*", function(err, response) {
-  response.redirect("/");
+  response.redirect("/homes");
 });
 
 
