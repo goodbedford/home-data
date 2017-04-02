@@ -187,10 +187,9 @@ router.route('/homes/:home_id/rooms/:id')
           });
       });
   });
-app.route("/*")
-  .get(function(err, response) {
-    response.redirect("/");
-  });
+app.get("/*", function(err, response) {
+  response.redirect("/");
+});
 
 
 app.use("/api", router);
