@@ -1,4 +1,4 @@
-##HomeData##
+##HomeData
 
 - Description: This is a node backend for a mock home automation console.
 - Site: https://goodbedford.github.io/thermostat-ng/
