@@ -32,6 +32,7 @@ router.use(function(request, response, next) {
   next();
 });
 // router
+app.use("/api", router);
 router.route('/homes')
   .get(function(request, response) {
     db.Home
@@ -187,12 +188,11 @@ router.route('/homes/:home_id/rooms/:id')
           });
       });
   });
-app.get("/*", function(err, response) {
+app.get("*", function(err, response) {
   response.redirect("/");
 });
 
 
-app.use("/api", router);
 app.listen(port, function() {
   console.log("app listening on port", port);
 });
