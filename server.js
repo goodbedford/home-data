@@ -4,11 +4,24 @@ let bodyParser = require('body-parser');
 let router = express.Router();
 let port = process.env.PORT || 3000;
 let mongoose = require('mongoose');
-let dotenv = require('dotenv');
+let dotenv = require('dotenv').load();
 let db = require('./app/models/index');
 
-dotenv.config();
-mongoose.connect(process.env.DB_THERMOSTAT);
+//dotenv.config();
+//mongoose.connect(process.env.DB_THERMOSTAT);
+
+
+//`require('dotenv').load();`
+//Then, after you reboot your server, you can access those secret variables in your code like so
+
+    // server.js
+    var superSecret = process.env.SUPERSECRET;
+    console.log(process.env);
+    var mongoAddress = 'mongodb://'+
+        process.env.DB_USER+':'+
+        process.env.DB_PASS+'@'+
+        process.env.DB_HOST;
+    mongoose.connect(mongoAddress);
 
 // middleware
 
