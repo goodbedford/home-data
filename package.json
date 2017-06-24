@@ -1,14 +1,14 @@
 {
-  "name": "home-data",
+  "name": "node_heroku",
   "version": "1.0.0",
-  "description": "",
+  "description": "- Description: This is a node backend for a mock home automation console. - Site: https://goodbedford.github.io/thermostat-ng/ - Repo: https://github.com/goodbedford/home-data - Stack: Javascript, Node, MongoDB, Mongoose, Jasmine",
   "main": "server.js",
   "scripts": {
     "test": "node specRunner.js",
     "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "marcelo",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.17.0",
     "dotenv": "^4.0.0",
@@ -20,5 +20,20 @@
     "jasmine": "^2.5.3",
     "jasmine-console-reporter": "^1.2.7",
     "request": "^2.80.0"
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/decareano/home-data.git"
+  },
+  "keywords": [
+    "sample",
+    "heroku"
+  ],
+  "bugs": {
+    "url": "https://github.com/decareano/home-data/issues"
+  },
+  "homepage": "https://github.com/decareano/home-data#readme"
 }
